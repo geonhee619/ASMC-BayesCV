@@ -1,4 +1,4 @@
-# aSMC-CV
+# ASMC-BayesCV
 
 This repository contains computer codes, output files, and figures for the paper:
 
@@ -19,7 +19,8 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 **Table of contents**:
 - [Contents](#contents)
 - [System notes](#system-notes)
-- [Instructions](#instructions)
+- [Instructions (Default)](#instructions-default)
+- [Instructions (Google Colab setup)](#instructions-google-colab-setup)
 - [Execution flow](#execution-flow)
 
 ---
@@ -46,16 +47,14 @@ The codes were developed and tested on the following environment.
   - Multithreading is optional.
   - However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
 
-## Instructions
+## Instructions (Default)
 
-### (1/3) Download/install **Julia v1.10.4**
+### Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
    - Other versions would likely work, but this is the tested environment.
 
 
-### (2/3) Setup multithreading via JupyterLab
-<!-- ### Setup multithreading
-#### Option 1: via JupyterLab -->
+### Setup multithreading via Jupyter(Lab)
 
 Configure Jupyter kernel with Threads as follows.
 
@@ -77,20 +76,7 @@ Configure Jupyter kernel with Threads as follows.
    - `"Julia (12 Threads)"` for `LEO.ipynb`
    - Or some other thread counts that suits your system's capabilities.
 
-<!-- #### Option 2: Run Julia w/ the desired thread count directly
-
-You can launch Julia with:
-```bash
-julia --project=. --threads 8
-```
-
-Or for LEO:
-```bash
-julia --project=. --threads 12
-```
--->
-
-### (3/3) Confirm thread count
+#### Confirm thread count
 
 To verify how many threads are running, the following code block is placed for all notebooks at the top under **Setup**:
 ```julia
@@ -100,22 +86,56 @@ println("Running on ", Threads.nthreads(), " threads.")
 
 For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
 
+## Instructions (Google Colab setup)
+
+This section also describes how to run the notebook in Google Colab.
+
+### Tested Colab environment
+
+- **OS**: Linux (`x86_64-linux-gnu`)
+- **CPU**: 2 × Intel(R) Xeon(R) CPU @ 2.20GHz  
+- **RAM**: 12 GB
+- **Julia**: v1.11.5
+- **Threads:** 2
+  - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
+  
+### Setup instructions
+
+1. **Upload** the entire folder and place it anywhere you like in your Google Drive.
+
+2. **Open the notebook** in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
+
+3. In the Python kernel, mount your Google Drive:
+   ```python
+   from google.colab import drive
+   drive.mount('/content/drive')
+   ```
+
+4. **Restart** the runtime with the **Julia kernel**: ("Runtime" → "Change runtime type" → "Julia").
+
+5. In Julia, navigate to the repo directory (to enable `.csv` data loading and access to `.jld` output):
+   ```julia
+   cd("/content/drive/MyDrive/ [ your chosen directory ] /ASMC-BayesCV")
+   ```
+
+6. You're all set!
+
 ## Execution flow
 
 Each notebook `{LGO, LSO, LEO}.ipynb`, when run top-to-bottom, executes:
 
 1. MCMC (Markov-chain Monte Carlo) simulation multiple times,
 2. SMC (Sequential Monte Carlo) simulation multiple times, and finally
-3. replicate figures to the folder `img_[session datetime]/`.
+3. replicate figures to the folder `img-[session datetime]/`.
 
 Step 1 and 2 can be computationally intensive, especially MCMC in step 1 (which is the core motivation for the paper!).
 
 To save time and allow for replication, we have included pre-computed output files in `output/`; you can skip the simulation steps and go directly to steps 2 and/or 3 if desired.
 
-The following execution options are available.
+Execution options:
 
-| Mode | Set | Step 1: MCMC | Step 2: SMC | Step 3: Figures |
+| Mode | Set | MCMC | SMC | Figures |
 |------|-------|-----------------|----------------|-------------------|
-| **I. Full run** | In **Setup** block:<br>`RUN_MCMC = true`<br>`RUN_aSMC = true` | Run and save to `output_[datetime]/` | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
-| **II. SMC only (default)** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = true` |  | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
-| **III. Replicate figures** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = false` |  |  | Replicate and save to `img_[datetime]/` |
+| **1. Full run** | In **Setup** block:<br>`RUN_MCMC = true`<br>`RUN_aSMC = true` | Run and save to `output_[datetime]/` | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
+| **2. SMC only (default)** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = true` |  | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
+| **3. Replicate figures** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = false` |  |  | Replicate and save to `img_[datetime]/` |
