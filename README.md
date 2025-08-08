@@ -27,8 +27,11 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ## Contents
 
+Large `.csv` data and `.jld` outputs are stored via Git LFS.
+
 - `data/`: Folder containing source data used in the examples.
 - `{LGO, LEO, LSO}.ipynb`: Jupyter notebooks to be run in Julia (1.10.4, ideally with multi-threading) top-to-bottom for computation, saving output, and figure generation.
+- `Figures.ipynb`: To generate Figure 1 in the manuscript.
 - `output/`: Contains `.jld` files with numerical simulation/computation results.
 - `img/`: Generated figures included in the paper.
 - Newly generated files will be saved in  `output_[session datetime]/` and  `img_[session datetime]/`.
@@ -49,10 +52,14 @@ The codes were developed and tested on the following environment.
 
 ## Instructions (Default)
 
+### Download the ASMC-BayesCV folder
+
+Large `.csv` data and `.jld` outputs are stored via Git LFS.
+For direct download, please refer to [this GDrive link](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
+
 ### Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
    - Other versions would likely work, but this is the tested environment.
-
 
 ### Setup multithreading via Jupyter(Lab)
 
@@ -100,8 +107,7 @@ This section also describes how to run the notebook in Google Colab.
   - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
   
 ### Setup instructions
-
-1. **Upload** the entire folder and place it anywhere you like in your Google Drive.
+1. ****Upload** the entire [ASMC-BayesCV folder](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing) and place it anywhere you like in your Google Drive.
 
 2. **Open the notebook** in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
 
