@@ -16,106 +16,35 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 }
 ```
 
+---
+
 **Table of contents**:
 - [Contents](#contents)
-- [System notes](#system-notes)
-- [Instructions](#instructions)
 - [Instructions (Google Colab setup)](#instructions-google-colab-setup)
+- [Instructions (Local JupyterLab on Windows)](#instructions-local-jupyterlab-on-windows)
 - [Execution flow](#execution-flow)
+- [System notes](#system-notes)
 
 ---
 
 ## Contents
 
-Large `.csv` data and `.jld` outputs are stored via Git LFS.
+> **Note:** This GitHub repository does not include large data/outputs directly (though they are tracked via Git LFS). The complete folder is provided separately at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
 
 - `data/`: Folder containing source data used in the examples.
+- `output/`: Contains `.jld` files with numerical simulation/computation results.
 - `{LGO, LEO, LSO}.ipynb`: Jupyter notebooks to be run in Julia (1.10.4, ideally with multi-threading) top-to-bottom for computation, saving output, and figure generation.
 - `Figures.ipynb`: To generate Figure 1 in the manuscript.
-- `output/`: Contains `.jld` files with numerical simulation/computation results.
 - `img/`: Generated figures included in the paper.
 - Newly generated files will be saved in  `output_[session datetime]/` and  `img_[session datetime]/`.
 
 ---
 
-## System notes
-
-The codes were developed and tested on the following **Windows** environment.
-
-- **OS**: Windows 11
-- **CPU**: 24-core 12th Gen Intel(R) Core(TM) i9-12900K
-- **RAM**: 32 GB
-- **Julia**: v1.10.4
-- **Multithreading configuration**:
-  - `JULIA_NUM_THREADS=8` for `{LGO.ipynb, LSO.ipynb}` (w/ HMC)
-  - `JULIA_NUM_THREADS=12` for `LEO.ipynb` (w/ full conditional Gibbs sampling)
-  - Multithreading is optional.
-  - However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
-
-The codes were also tested on the following **Google Colab** environment.
-
-- **OS**: Linux (`x86_64-linux-gnu`)
-- **CPU**: 2 × Intel(R) Xeon(R) CPU @ 2.20GHz  
-- **RAM**: 12 GB
-- **Julia**: v1.11.5
-- **Threads:** 2
-  - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
-
----
-
-## Instructions
-
-#### (1/3) Download the ASMC-BayesCV folder
-
-Large `.csv` data and `.jld` outputs are stored via Git LFS.
-For direct download, please refer to [this GDrive link](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
-
-#### (2/3) Download/install **Julia v1.10.4**
-   - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
-   - Other versions would likely work, but this is the tested environment.
-
-#### (3/3) Setup multithreading via Jupyter(Lab)
-
-Configure Jupyter kernel with Threads as follows.
-
-1. Open Julia and install custom kernels:
-   ```julia
-   using IJulia
-   installkernel("Julia (8 Threads)", env=Dict("JULIA_NUM_THREADS" => "8"))
-   installkernel("Julia (12 Threads)", env=Dict("JULIA_NUM_THREADS" => "12"))
-   ```
-
-2. Launch Jupyter:
-   ```julia
-   using IJulia
-   jupyterlab()
-   ```
-
-3. Select the desired kernel in JupyterLab on the top right:
-   - `"Julia (8 Threads)"` for `LGO.ipynb`, `LSO.ipynb`
-   - `"Julia (12 Threads)"` for `LEO.ipynb`
-   - Or some other thread counts that suits your system's capabilities.
-
-4. Confirm thread count.
-
-To verify how many threads are running, the following code block is placed for all notebooks at the top under **Setup**:
-```julia
-using Threads
-println("Running on ", Threads.nthreads(), " threads.")
-```
-
-For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
-
----
-
 ## Instructions (Google Colab setup)
 
-This section also describes how to run the notebook in Google Colab.
-  
-### Setup instructions
-1. ****Upload** the entire [ASMC-BayesCV folder](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing) and place it anywhere you like in your Google Drive.
+1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing) and place it anywhere you like in your Google Drive.
 
-2. **Open the notebook** in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
+2. Open the notebook in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
 
 3. In the Python kernel, mount your Google Drive:
    ```python
@@ -123,14 +52,55 @@ This section also describes how to run the notebook in Google Colab.
    drive.mount('/content/drive')
    ```
 
-4. **Restart** the runtime with the **Julia kernel**: ("Runtime" → "Change runtime type" → "Julia").
+4. Restart the runtime with the **Julia kernel**: ("Runtime" → "Change runtime type" → "Julia").
 
 5. In Julia, navigate to the repo directory (to enable `.csv` data loading and access to `.jld` output):
    ```julia
    cd("/content/drive/MyDrive/ [ your chosen directory ] /ASMC-BayesCV")
    ```
 
-6. You're all set!
+6. You're all set! You can run each notebook from top to bottom.
+
+---
+
+## Instructions (Local JupyterLab on Windows)
+
+1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
+
+2. Download/install **Julia v1.10.4**
+   - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
+   - Other versions would likely work, but this is the original tested environment.
+
+3. Setup multithreading via Jupyter(Lab); configure Jupyter kernel with Threads as follows.
+
+   - Open Julia and install custom kernels:
+   ```julia
+   using IJulia
+   installkernel("Julia (8 Threads)", env=Dict("JULIA_NUM_THREADS" => "8"))
+   installkernel("Julia (12 Threads)", env=Dict("JULIA_NUM_THREADS" => "12"))
+   ```
+
+   - Launch Jupyter:
+   ```julia
+   using IJulia
+   jupyterlab()
+   ```
+
+   - Select the desired kernel in JupyterLab on the top right:
+     - `"Julia (8 Threads)"` for `LGO.ipynb`, `LSO.ipynb`
+     - `"Julia (12 Threads)"` for `LEO.ipynb`
+     - Or some other thread counts that suits your system's capabilities.
+
+4. Confirm thread count; to verify how many threads are running, the following code block is placed for all notebooks at the top under **Setup**:
+
+```julia
+using Threads
+println("Running on ", Threads.nthreads(), " threads.")
+```
+
+For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
+
+5. Run each notebook from top to bottom.
 
 ---
 
@@ -153,3 +123,28 @@ Execution options:
 | **1. Full run** | In **Setup** block:<br>`RUN_MCMC = true`<br>`RUN_aSMC = true` | Run and save to `output_[datetime]/` | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
 | **2. SMC only (default)** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = true` |  | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
 | **3. Replicate figures** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = false` |  |  | Replicate and save to `img_[datetime]/` |
+
+---
+
+## System notes
+
+- The codes were developed and tested on the following **Windows** environment.
+
+  - **OS**: Windows 11
+  - **CPU**: 24-core 12th Gen Intel(R) Core(TM) i9-12900K
+  - **RAM**: 32 GB
+  - **Julia**: v1.10.4
+  - **Multithreading configuration**:
+    - `JULIA_NUM_THREADS=8` for `{LGO.ipynb, LSO.ipynb}` (w/ HMC)
+    - `JULIA_NUM_THREADS=12` for `LEO.ipynb` (w/ full conditional Gibbs sampling)
+    - Multithreading is optional.
+    - However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
+
+- The codes were also tested on the following **Google Colab** environment.
+
+  - **OS**: Linux (`x86_64-linux-gnu`)
+  - **CPU**: 2 × Intel(R) Xeon(R) CPU @ 2.20GHz  
+  - **RAM**: 12 GB
+  - **Julia**: v1.11.5
+  - **Threads:** 2
+    - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
