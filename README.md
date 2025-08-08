@@ -1,6 +1,6 @@
 # ASMC-BayesCV
 
-This repository contains computer codes, output files, and figures for the paper:
+This is the [README.md](https://github.com/geonhee619/ASMC-BayesCV/blob/main/README.md) for the repository containing computer code, output files, and figures for the paper:
 
 Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-validation in structural Bayesian hierarchical models"**. <https://arxiv.org/abs/2501.07685>
 
@@ -19,7 +19,7 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 **Table of contents**:
 - [Contents](#contents)
 - [System notes](#system-notes)
-- [Instructions (Default)](#instructions-default)
+- [Instructions](#instructions)
 - [Instructions (Google Colab setup)](#instructions-google-colab-setup)
 - [Execution flow](#execution-flow)
 
@@ -36,9 +36,11 @@ Large `.csv` data and `.jld` outputs are stored via Git LFS.
 - `img/`: Generated figures included in the paper.
 - Newly generated files will be saved in  `output_[session datetime]/` and  `img_[session datetime]/`.
 
+---
+
 ## System notes
 
-The codes were developed and tested on the following environment.
+The codes were developed and tested on the following **Windows** environment.
 
 - **OS**: Windows 11
 - **CPU**: 24-core 12th Gen Intel(R) Core(TM) i9-12900K
@@ -50,18 +52,29 @@ The codes were developed and tested on the following environment.
   - Multithreading is optional.
   - However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
 
-## Instructions (Default)
+The codes were also tested on the following **Google Colab** environment.
 
-### Download the ASMC-BayesCV folder
+- **OS**: Linux (`x86_64-linux-gnu`)
+- **CPU**: 2 × Intel(R) Xeon(R) CPU @ 2.20GHz  
+- **RAM**: 12 GB
+- **Julia**: v1.11.5
+- **Threads:** 2
+  - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
+
+---
+
+## Instructions
+
+#### (1/3) Download the ASMC-BayesCV folder
 
 Large `.csv` data and `.jld` outputs are stored via Git LFS.
 For direct download, please refer to [this GDrive link](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
 
-### Download/install **Julia v1.10.4**
+#### (2/3) Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
    - Other versions would likely work, but this is the tested environment.
 
-### Setup multithreading via Jupyter(Lab)
+#### (3/3) Setup multithreading via Jupyter(Lab)
 
 Configure Jupyter kernel with Threads as follows.
 
@@ -83,7 +96,7 @@ Configure Jupyter kernel with Threads as follows.
    - `"Julia (12 Threads)"` for `LEO.ipynb`
    - Or some other thread counts that suits your system's capabilities.
 
-#### Confirm thread count
+4. Confirm thread count.
 
 To verify how many threads are running, the following code block is placed for all notebooks at the top under **Setup**:
 ```julia
@@ -93,18 +106,11 @@ println("Running on ", Threads.nthreads(), " threads.")
 
 For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
 
+---
+
 ## Instructions (Google Colab setup)
 
 This section also describes how to run the notebook in Google Colab.
-
-### Tested Colab environment
-
-- **OS**: Linux (`x86_64-linux-gnu`)
-- **CPU**: 2 × Intel(R) Xeon(R) CPU @ 2.20GHz  
-- **RAM**: 12 GB
-- **Julia**: v1.11.5
-- **Threads:** 2
-  - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
   
 ### Setup instructions
 1. ****Upload** the entire [ASMC-BayesCV folder](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing) and place it anywhere you like in your Google Drive.
@@ -125,6 +131,8 @@ This section also describes how to run the notebook in Google Colab.
    ```
 
 6. You're all set!
+
+---
 
 ## Execution flow
 
