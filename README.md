@@ -120,11 +120,11 @@ To save time and allow for replication, we have included pre-computed output fil
 
 Execution options:
 
-| Mode | Set | MCMC | SMC | Figures |
+| Mode | Set in `Init.jl" | MCMC | SMC | Figures |
 |------|-------|-----------------|----------------|-------------------|
-| **1. Full run** | In **Setup** block:<br>`RUN_MCMC = true`<br>`RUN_aSMC = true` | Run and save to `output_[datetime]/` | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
-| **2. SMC only (default)** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = true` |  | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
-| **3. Replicate figures** | In **Setup** block:<br>`RUN_MCMC = false`<br>`RUN_aSMC = false` |  |  | Replicate and save to `img_[datetime]/` |
+| **1. Full run** | `RUN_MCMC = true`<br>`RUN_aSMC = true` | Run and save to `output_[datetime]/` | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
+| **2. SMC only** | `RUN_MCMC = false`<br>`RUN_aSMC = true` |  | Run and save to `output_[datetime]/` | Replicate and save to `img_[datetime]/` |
+| **3. Replicate figures** | `RUN_MCMC = false`<br>`RUN_aSMC = false` |  |  | Replicate and save to `img_[datetime]/` |
 
 ---
 
