@@ -29,14 +29,16 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ## Contents
 
-> **Note:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
-
-- `data/`: Folder containing source data used in the examples.
-- `output/`: Contains `.jld` files with numerical simulation/computation results.
+- `data/`: Source data used in the examples.
+- `output/`: Contains `.jld` files with numerical results.
 - `{LGO, LEO, LSO}.ipynb`: Jupyter notebooks to be run in Julia (1.10.4, ideally with multi-threading) top-to-bottom for computation, saving output, and figure generation.
 - `Figures.ipynb`: To generate Figure 1 in the manuscript.
-- `img/`: Generated figures included in the paper.
-- Newly generated files will be saved in  `output_[session datetime]/` and  `img_[session datetime]/`.
+- `img/`: Generated figures in the paper.
+- `output_[session datetime]/` and  `img_[session datetime]/`: Newly generated files will be saved here.
+
+> **Note 1:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
+
+> **Note 2:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
 
 ---
 
@@ -81,6 +83,8 @@ For details on multithreading in Julia, please see [Julia v1.10 documentation on
 
 5. Run each notebook from top to bottom.
 
+> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
+
 ---
 
 ## Instructions (Google Colab setup)
@@ -103,6 +107,8 @@ For details on multithreading in Julia, please see [Julia v1.10 documentation on
    ```
 
 6. You're all set! You can run each notebook from top to bottom.
+
+> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
 
 ---
 
