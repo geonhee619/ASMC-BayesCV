@@ -20,8 +20,8 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 **Table of contents**:
 - [Contents](#contents)
-- [Instructions (Google Colab setup)](#instructions-google-colab-setup)
 - [Instructions (Local JupyterLab on Windows)](#instructions-local-jupyterlab-on-windows)
+- [Instructions (Google Colab setup)](#instructions-google-colab-setup)
 - [Execution flow](#execution-flow)
 - [System notes](#system-notes)
 
@@ -29,7 +29,7 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ## Contents
 
-> **Note:** This GitHub repository does not include large data/outputs directly (though they are tracked via Git LFS). The complete folder is provided separately at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
+> **Note:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)]().
 
 - `data/`: Folder containing source data used in the examples.
 - `output/`: Contains `.jld` files with numerical simulation/computation results.
@@ -40,38 +40,17 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ---
 
-## Instructions (Google Colab setup)
-
-1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing) and place it anywhere you like in your Google Drive.
-
-2. Open the notebook in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
-
-3. In the Python kernel, mount your Google Drive:
-   ```python
-   from google.colab import drive
-   drive.mount('/content/drive')
-   ```
-
-4. Restart the runtime with the **Julia kernel**: ("Runtime" → "Change runtime type" → "Julia").
-
-5. In Julia, navigate to the repo directory (to enable `.csv` data loading and access to `.jld` output):
-   ```julia
-   cd("/content/drive/MyDrive/ [ your chosen directory ] /ASMC-BayesCV")
-   ```
-
-6. You're all set! You can run each notebook from top to bottom.
-
----
-
 ## Instructions (Local JupyterLab on Windows)
 
-1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/14L6s5VzFMgB7NU3UANJZlpRK0RKwCGLT?usp=sharing).
+1. Download [ASMC-BayesCV (Google Drive)]().
 
 2. Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
    - Other versions would likely work, but this is the original tested environment.
 
 3. Setup multithreading via Jupyter(Lab); configure Jupyter kernel with Threads as follows.
+
+> **Note:** Multithreading is optional. However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
 
    - Open Julia and install custom kernels:
    ```julia
@@ -101,6 +80,29 @@ println("Running on ", Threads.nthreads(), " threads.")
 For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
 
 5. Run each notebook from top to bottom.
+
+---
+
+## Instructions (Google Colab setup)
+
+1. Download [ASMC-BayesCV (Google Drive)]() and place it anywhere you like in your Google Drive.
+
+2. Open the notebook in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
+
+3. In the Python kernel, mount your Google Drive:
+   ```python
+   from google.colab import drive
+   drive.mount('/content/drive')
+   ```
+
+4. Restart the runtime with the **Julia kernel**: ("Runtime" → "Change runtime type" → "Julia").
+
+5. In Julia, navigate to the repo directory (to enable `.csv` data loading and access to `.jld` output):
+   ```julia
+   cd("/content/drive/MyDrive/ [ your chosen directory ] /ASMC-BayesCV")
+   ```
+
+6. You're all set! You can run each notebook from top to bottom.
 
 ---
 
@@ -137,8 +139,6 @@ Execution options:
   - **Multithreading configuration**:
     - `JULIA_NUM_THREADS=8` for `{LGO.ipynb, LSO.ipynb}` (w/ HMC)
     - `JULIA_NUM_THREADS=12` for `LEO.ipynb` (w/ full conditional Gibbs sampling)
-    - Multithreading is optional.
-    - However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
 
 - The codes were also tested on the following **Google Colab** environment.
 
@@ -147,4 +147,5 @@ Execution options:
   - **RAM**: 12 GB
   - **Julia**: v1.11.5
   - **Threads:** 2
-    - Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
+
+> **Note:** Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.

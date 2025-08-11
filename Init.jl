@@ -3,7 +3,7 @@ using Dates, LaTeXStrings
 using LinearAlgebra, NamedArrays
 using Random, Distributions, StatsBase, StatsFuns
 using Plots, StatsPlots, ProgressMeter
-using AdvancedHMC, LogDensityProblems
+using AdvancedHMC, LogDensityProblems, Turing
 using PSIS, Roots
 
 vecvec2mat(_v) = reduce(hcat, _v)' |> Matrix
@@ -12,9 +12,13 @@ symmetric(_m) = Symmetric((_m + _m') ./ 2)
 _round(_x::Float64)::Float64 = round(_x; digits=3)
 _sum(_M; dims::Int64) = dropdims(sum(_M; dims=dims); dims=dims)
 _mean(_M; dims::Int64) = dropdims(mean(_M; dims=dims); dims=dims)
+(^)(f::Function, i::Int) = i==1 ? f : x->(f^(i-1))(f(x))
 
 default(size=(500,200))
 
-(^)(f::Function, i::Int) = i==1 ? f : x->(f^(i-1))(f(x))
+(RUN_MCMC, RUN_aSMC) = (false, false)
+
+# Tag by timestamp
+SESSION = Dates.format(now(), "yyyy-mm-dd-HH-MM-SS");
 
 ;
