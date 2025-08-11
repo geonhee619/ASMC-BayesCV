@@ -2,11 +2,11 @@
 
 This is the [README.md](https://github.com/geonhee619/ASMC-BayesCV/blob/main/README.md) for the repository containing computer code, output files, and figures for the paper:
 
-Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-validation in structural Bayesian hierarchical models"**. <https://arxiv.org/abs/2501.07685>
+Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for structured cross-validation in Bayesian hierarchical models"**. <https://arxiv.org/abs/2501.07685>
 
 ```bibtex
 @misc{HanGelman2025adaptiveSequentialMonteCarlo,
-      title={Adaptive sequential Monte Carlo for automated cross validation in structural Bayesian hierarchical models}, 
+      title={Adaptive sequential Monte Carlo for structured cross validation in Bayesian hierarchical models}, 
       author={Geonhee Han and Andrew Gelman},
       year={2025},
       eprint={2501.07685},
@@ -36,9 +36,7 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 - `img/`: Generated figures in the paper.
 - `output_[session datetime]/` and  `img_[session datetime]/`: Newly generated files will be saved here.
 
-> **Note 1:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
-
-> **Note 2:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
+> **Note:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs in `data/` and `output/` directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
 
 ---
 
@@ -46,11 +44,13 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
 
+> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
+
 2. Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
    - Other versions would likely work, but this is the original tested environment.
 
-3. Setup multithreading via Jupyter(Lab); configure Jupyter kernel with Threads as follows.
+3. Setup multithreading via Jupyter(Lab).
 
 > **Note:** Multithreading is optional. However, it is strongly recommended; the simulations take advantage of parallelizability for efficient computing, and thread counts may directly affect results.
 
@@ -79,17 +79,15 @@ using Threads
 println("Running on ", Threads.nthreads(), " threads.")
 ```
 
-For details on multithreading in Julia, please see [Julia v1.10 documentation on multi-threading](https://docs.julialang.org/en/v1/manual/multi-threading/).
-
 5. Run each notebook from top to bottom.
-
-> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
 
 ---
 
 ## Instructions (Google Colab setup)
 
 1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing) and place it anywhere you like in your Google Drive.
+
+> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
 
 2. Open the notebook in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
 
@@ -107,8 +105,6 @@ For details on multithreading in Julia, please see [Julia v1.10 documentation on
    ```
 
 6. You're all set! You can run each notebook from top to bottom.
-
-> **Note:** To run `LSO.ipynb`, please additionally download `sales_train_validation.csv` from [https://www.kaggle.com/competitions/m5-forecasting-accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data?select=sales_train_validation.csv), and place it in the following location: `data/m5-forecasting-accuracy/sales_train_validation.csv`.
 
 ---
 
@@ -153,5 +149,3 @@ Execution options:
   - **RAM**: 12 GB
   - **Julia**: v1.11.5
   - **Threads:** 2
-
-> **Note:** Note the default environment in Google Colab differs from the aforementioned original and recommended (8-12 thread) setup.
