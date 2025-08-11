@@ -79,7 +79,11 @@ using Threads
 println("Running on ", Threads.nthreads(), " threads.")
 ```
 
-5. Run each notebook from top to bottom.
+5. Navigate to the repo directory (to enable `.csv` data loading and access to `.jld` output),
+```julia
+cd("[ your chosen directory ] /ASMC-BayesCV")
+```
+then run each notebook from top to bottom.
 
 ---
 
