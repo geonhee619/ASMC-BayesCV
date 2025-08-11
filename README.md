@@ -29,7 +29,7 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ## Contents
 
-> **Note:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)]().
+> **Note:** [This GitHub repository](https://github.com/geonhee619/ASMC-BayesCV) does not include large data/outputs directly (but tracked via Git LFS). The complete folder can be found at [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
 
 - `data/`: Folder containing source data used in the examples.
 - `output/`: Contains `.jld` files with numerical simulation/computation results.
@@ -42,7 +42,7 @@ Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for cross-valid
 
 ## Instructions (Local JupyterLab on Windows)
 
-1. Download [ASMC-BayesCV (Google Drive)]().
+1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing).
 
 2. Download/install **Julia v1.10.4**
    - Link: [https://julialang.org/downloads/oldreleases/](https://julialang.org/downloads/oldreleases/#:~:text=bf8f45f85d7c615f01aa46db427c2435b397ec58f2c7ee6d4b0785481a747d98-,v1.10.4,-%2C%20on%202024%2D06)
@@ -85,7 +85,7 @@ For details on multithreading in Julia, please see [Julia v1.10 documentation on
 
 ## Instructions (Google Colab setup)
 
-1. Download [ASMC-BayesCV (Google Drive)]() and place it anywhere you like in your Google Drive.
+1. Download [ASMC-BayesCV (Google Drive)](https://drive.google.com/drive/folders/1KHuBDZFao82LK4aOxPRX-MtYJyYGNL0K?usp=sharing) and place it anywhere you like in your Google Drive.
 
 2. Open the notebook in Google Colab using the **Python kernel**: ("Runtime" → "Change runtime type" → "Python").
 
