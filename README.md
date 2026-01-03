@@ -2,17 +2,19 @@
 
 This is the [README.md](https://github.com/geonhee619/ASMC-BayesCV/blob/main/README.md) for the repository containing computer code, output files, and figures for the paper:
 
-Han, G. and Gelman, A. (2025) **"Adaptive sequential Monte Carlo for structured cross-validation in Bayesian hierarchical models"**. <https://arxiv.org/abs/2501.07685>
+Han, G. and Gelman, A. (2026)
+**"Adaptive sequential Monte Carlo for structured cross-validation in Bayesian hierarchical models"**.
+_Journal of Computational and Graphical Statistics_.
+doi: <https://doi.org/10.1080/10618600.2025.2612246>.
+<https://arxiv.org/abs/2501.07685>.
 
 ```bibtex
-@misc{HanGelman2025adaptiveSequentialMonteCarlo,
-      title={Adaptive sequential Monte Carlo for structured cross validation in Bayesian hierarchical models}, 
-      author={Geonhee Han and Andrew Gelman},
-      year={2025},
-      eprint={2501.07685},
-      archivePrefix={arXiv},
-      primaryClass={stat.CO},
-      url={https://arxiv.org/abs/2501.07685}, 
+@article{HanGelman2026adaptiveSequentialMonteCarlo,
+      author = {Han, Geonhee and Gelman, Andrew},
+      title = {Adaptive sequential Monte Carlo for structured cross validation in Bayesian hierarchical models},
+      journal = {Journal of Computational and Graphical Statistics},
+      year = {2026},
+      doi = {10.1080/10618600.2025.2612246},
 }
 ```
 
